@@ -1,0 +1,6 @@
+config\DBConfig.class
+core\DBConnexion.class
+core\EntityManager.class
+app\SDB_U3ProyectoG1.class
+core\AbstractModel.class
+app\models\Test.class
