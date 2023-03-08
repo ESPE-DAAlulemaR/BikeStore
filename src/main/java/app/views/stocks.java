@@ -1,20 +1,35 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
- */
 package app.views;
+
+import app.controllers.ProductController;
+import app.models.Model;
+import java.util.ArrayList;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
  * @author marys
  */
-public class stocks extends javax.swing.JPanel {
+public class Stocks extends javax.swing.JPanel {
 
     /**
      * Creates new form stocks
      */
-    public stocks() {
+    public Stocks() {
         initComponents();
+        refreshTable();
+    }
+    
+    public void refreshTable()
+    {
+        DefaultTableModel model = (DefaultTableModel) this.tblStock.getModel();
+
+        model.setRowCount(0);
+
+        ArrayList<Model> stocks = ProductController.getStock();
+        for (Model stock : stocks) {
+            Object[] row = { stock.product_name, stock.stock_quality, stock.store_name };
+            model.addRow(row);
+        }
     }
 
     /**
@@ -28,11 +43,11 @@ public class stocks extends javax.swing.JPanel {
 
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tblStock = new javax.swing.JTable();
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tblStock.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null},
                 {null, null, null},
@@ -56,10 +71,10 @@ public class stocks extends javax.swing.JPanel {
                 {null, null, null}
             },
             new String [] {
-                "ID", "stock_quality", "stock quality"
+                "Producto", "Cantidad", "Tienda"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(tblStock);
 
         jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(137, 53, 749, 414));
 
@@ -79,6 +94,6 @@ public class stocks extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTable tblStock;
     // End of variables declaration//GEN-END:variables
 }

@@ -268,6 +268,7 @@ public abstract class AbstractModel {
                                 attr.set(newInstance, rs.getObject(select).toString());
                         }
                     } else {
+                        System.out.println("else");
                         for (String field : fields)
                             if (attrName.equals(field))
                                 attr.set(newInstance,

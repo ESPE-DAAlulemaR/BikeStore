@@ -8,19 +8,19 @@ drop index if exists EXUCUTER_FK;
 
 drop index if exists AUDIT_PK;
 
-drop table if exists AUDIT;
+drop table if exists AUDIT CASCADE;
 
 drop index if exists BRANDS_PK;
 
-drop table if exists BRANDS;
+drop table if exists BRANDS CASCADE;
 
 drop index if exists CATEGORIES_PK;
 
-drop table if exists CATEGORIES;
+drop table if exists CATEGORIES CASCADE;
 
 drop index if exists CUSTOMERS_PK;
 
-drop table if exists CUSTOMERS;
+drop table if exists CUSTOMERS CASCADE;
 
 drop index if exists STORE_ORDERS_FK;
 
@@ -30,7 +30,7 @@ drop index if exists STAFF_ORDERS_FK;
 
 drop index if exists ORDERS_PK;
 
-drop table if exists ORDERS;
+drop table if exists ORDERS CASCADE;
 
 drop index if exists PRODUCTS_ORDERS_FK;
 
@@ -38,7 +38,7 @@ drop index if exists ORDERS_PRODUCTS_FK;
 
 drop index if exists ORDER_ITEMS_PK;
 
-drop table if exists ORDER_ITEMS;
+drop table if exists ORDER_ITEMS CASCADE;
 
 drop index if exists CATEGORY_PRODUCTS_FK;
 
@@ -46,7 +46,7 @@ drop index if exists BRAND_PRODUCTS_FK;
 
 drop index if exists PRODUCTS_PK;
 
-drop table if exists PRODUCTS;
+drop table if exists PRODUCTS CASCADE;
 
 drop index if exists RELATIONSHIP_13_FK;
 
@@ -54,7 +54,7 @@ drop index if exists MANAGER_FK;
 
 drop index if exists STAFFS_PK;
 
-drop table if exists STAFFS;
+drop table if exists STAFFS CASCADE;
 
 drop index if exists STOCKS_ORDERS_FK;
 
@@ -62,21 +62,21 @@ drop index if exists PRODUCTS_STOCK_FK;
 
 drop index if exists STOCKS_PK;
 
-drop table if exists STOCKS;
+drop table if exists STOCKS CASCADE;
 
 drop index if exists STORES_PK;
 
-drop table if exists STORES;
+drop table if exists STORES CASCADE;
 
 drop index if exists USERS_PK;
 
-drop table if exists USERS;
+drop table if exists USERS CASCADE;
 
 drop index if exists CUSTOMERVIP_FK;
 
 drop index if exists VIP_CUSTOMERS_PK;
 
-drop table if exists VIP_CUSTOMERS;
+drop table if exists VIP_CUSTOMERS CASCADE;
 
 /*==============================================================*/
 /* Table: AUDIT                                                 */
@@ -145,8 +145,8 @@ create table CUSTOMERS (
    CUSTOMER_PHONE       VARCHAR(10)          null,
    CUSTOMER_EMAIL       VARCHAR(100)         null,
    CUSTOMER_STREET      VARCHAR(50)          null,
-   CUSTOMER_CITY        VARCHAR(25)          null,
-   CUSTOMER_STATE       VARCHAR(25)          null,
+   CUSTOMER_CITY        VARCHAR(50)          null,
+   CUSTOMER_STATE       VARCHAR(50)          null,
    CUSTOMER_ZIP_CODE    VARCHAR(6)           null,
    constraint PK_CUSTOMERS primary key (CUSTOMER_ID)
 );
@@ -409,12 +409,12 @@ alter table AUDIT
 
 alter table ORDERS
    add constraint FK_ORDERS_COSTOMER__CUSTOMER foreign key (STAFF_ID)
-      references CUSTOMERS (CUSTOMER_ID)
+      references STAFFS (STAFF_ID)
       on delete cascade on update cascade;
 
 alter table ORDERS
    add constraint FK_ORDERS_STAFF_ORD_STAFFS foreign key (CUSTOMER_ID)
-      references STAFFS (STAFF_ID)
+      references CUSTOMERS (CUSTOMER_ID)
       on delete cascade on update cascade;
 
 alter table ORDERS

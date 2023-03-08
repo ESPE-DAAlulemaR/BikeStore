@@ -58,4 +58,13 @@ public class ProductController {
         
         model.delete();
     }
+    
+    public static ArrayList<Model> getStock() {
+        Model model = new Product();
+        String[] fields = { "product_name", "stock_quality", "store_name" };
+        return model.select(fields)
+                .join("stocks", "products.product_id", "stocks.product_id")
+                .join("stores", "stocks.store_id", "stores.store_id")
+                .get();
+    }
 }

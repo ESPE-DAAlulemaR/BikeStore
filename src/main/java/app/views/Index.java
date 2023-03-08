@@ -468,7 +468,7 @@ public class Index extends javax.swing.JFrame {
     }//GEN-LAST:event_btnStartMouseExited
 
     private void btnBikesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBikesMouseClicked
-        showPanel(new stocks());
+        showPanel(new Stocks());
         this.lblNavInfo.setText("stocks");
     }//GEN-LAST:event_btnBikesMouseClicked
 
@@ -481,7 +481,7 @@ public class Index extends javax.swing.JFrame {
     }//GEN-LAST:event_btnBikesMouseExited
 
     private void btnSalesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSalesMouseClicked
-        showPanel(new ventas());
+        showPanel(new Ventas());
         this.lblNavInfo.setText("ventas");
     }//GEN-LAST:event_btnSalesMouseClicked
 
@@ -494,7 +494,7 @@ public class Index extends javax.swing.JFrame {
     }//GEN-LAST:event_btnSalesMouseExited
 
     private void btnUsersMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnUsersMouseClicked
-        //showPanel(new Users());
+        showPanel(new Users());
         this.lblNavInfo.setText("Administrar Usuarios");
     }//GEN-LAST:event_btnUsersMouseClicked
 
@@ -508,7 +508,7 @@ public class Index extends javax.swing.JFrame {
 
     private void btnEmployesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEmployesMouseClicked
        // METODO PARA LLAMAR A JFROM EMPLEADO
-        showPanel(new Empleado());
+        showPanel(new Employee());
         this.lblNavInfo.setText("Administrar empleados");
     }//GEN-LAST:event_btnEmployesMouseClicked
 

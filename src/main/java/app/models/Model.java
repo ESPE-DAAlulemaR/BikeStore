@@ -59,5 +59,5 @@ public class Model extends AbstractModel {
     public String name, lastname, username, email, password;
     
     // Consultas 
-    public String total;
+    public String total, staff_name;
 }
